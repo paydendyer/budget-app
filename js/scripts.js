@@ -8,6 +8,13 @@ const expForm = document.getElementById("expForm");
 let expName = document.getElementById("expName");
 let expNumber = document.getElementById("expNumber");
 
+const editForm = document.getElementById("editForm");
+const saveEdit = document.getElementById("saveEdit");
+const editExpValue = document.getElementById("editExpValue");
+const editExpNumber = document.getElementById("editExpNumber");
+
+const budgetForm = document.getElementById("budget-form");
+
 let id = 0;
 let details = [];
 
@@ -24,8 +31,8 @@ function getBudgetAmount(amount) {
   } else {
     budgetAmount.innerText = amount;
     balanceAmount.innerText = amount;
-    expenseForm.style.display = "block";
-    budgetform.style.display = "none";
+    expForm.style.display = "block";
+    budgetForm.style.display = "none";
     editForm.style.display = "none";
     amountInput.value = "";
   }
@@ -102,7 +109,7 @@ function updateBalance() {
 
 //Edit Function
 function editExpDetails(id) {
-  expenseForm.style.display = "none";
+  expForm.style.display = "none";
   budgetForm.style.display = "none";
   editForm.style.display = "We Block";
   details.findIndex((item) => {
@@ -114,6 +121,26 @@ function editExpDetails(id) {
     }
   });
 }
+
+function getExpValue(editExpName, editExpNumber, id) {
+  edited = details.findIndex((obj) => obj.id == id);
+  details[edited].name = editExpName;
+  details[edited].number = parseInt(editExpNumber);
+  displayExp(details);
+}
+
+//Delete an expense
+function delExpenseDetails(id) {
+  let index = details.findIndex((item) => item.id === id);
+  details.splice(index, 1);
+  displayExp(details);
+}
+
+saveEdit.addEventListener("submit", (e) => {
+  e.preventDefault();
+  getExpValue(editExpName.value, editExpNumber.value, saveEdit.children[2].id);
+});
+
 expForm.addEventListener("submit", (e) => {
   e.preventDefault();
   addExpenses(expName.value, expNumber.value);

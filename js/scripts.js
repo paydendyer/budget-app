@@ -30,7 +30,7 @@ function getBudgetAmount(amount) {
     amountInput.value = "";
   }
 }
-//Displays list of expenses
+//Creates Expense
 function addExpenses(name, number) {
   if(!name.length || !number.length) {
     expName.style.border = "1px solid #b80c09";
@@ -62,6 +62,36 @@ function addExpenses(name, number) {
     expName.value = "";
     expNumber.value = "";
   }
+}
+//Displays expenses
+function displayExp(details) {
+  expValue.innerHTML = null;
+  for (i=0; i < details.length; i++) {
+    expValue.innerHTML += `
+    <div class="expValue" id="${details[i].id}">
+      <div id="expTitleName" class="exp"><p>${details[i].name}</p></div>
+      <div id="expValueAmount" class="exp"><p> <span>$ </span> ${details[i].number}</p></div>
+      <div id="edite_delete">
+        <p>
+          <button id="${details[i].id}" onclick="editExpDetails(${details[i].id})"> <img src="image/edit.svg" width="15" alt=""  /></button> 
+          <button id="${details[i].id}" onclick="delExpenseDetails(${details[i].id})"><img src="image/trash.svg" width="15" alt="" /></button>
+        </p>
+      </div>
+    </div>
+    `;
+  }
+  calcExpenses();
+  display.Expenses.style.display = "block";
+}
+
+//Calculates expenses
+function calcExpenses() {
+  let totalExp = 0;
+  for (i=0; i < details.length; i++) {
+    totalExp = details[i].number + totalExp;
+  }
+  expensesAmount.innerText = totalExp;
+  updateBalance();
 }
 
 expForm.addEventListener("submit", (e) => {

@@ -42,6 +42,7 @@
     </div>
   </div>
   
+  <!-- Expenses Form-->
   <div class="expense-form" id="expense-form">
     <form action="" id="expForm">
 
@@ -57,6 +58,21 @@
 
       <button type="submit" id="submitExpen">Add Expense</button>
     </form>
+
+    <!-- Edit Expenses Form-->
+    <div class="edit-form" id="editForm">
+      <form action="" id="saveEdit">
+         <div class="">
+             <label for="">Edit your expense</label> <br />
+             <input type="text" id="editExpName" />
+         </div>
+         <div class="">
+             <label for="">Edit expense amount</label> <br />
+             <input type="number" id="editExpNumber" />
+         </div>
+         <button type="submit">Save changes</button>
+      </form>
+   </div>
   </div>
   <script src="js/scripts.js"></script>
 </body>

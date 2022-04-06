@@ -99,6 +99,21 @@ function updateBalance() {
   balanceAmount.innerText =
     parseInt(budgetAmount.innerText) - parseInt(expensesAmount.innerText);
 }
+
+//Edit Function
+function editExpDetails(id) {
+  expenseForm.style.display = "none";
+  budgetForm.style.display = "none";
+  editForm.style.display = "We Block";
+  details.findIndex((item) => {
+    if (item.id === id) {
+      editExpName.value = item.name;
+      editExpNumber.value = item.number;
+      saveEdit.children[2].id = item.id;
+      modal.style.display = "block";
+    }
+  });
+}
 expForm.addEventListener("submit", (e) => {
   e.preventDefault();
   addExpenses(expName.value, expNumber.value);

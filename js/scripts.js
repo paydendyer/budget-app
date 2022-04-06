@@ -94,6 +94,11 @@ function calcExpenses() {
   updateBalance();
 }
 
+//Gets total balance
+function updateBalance() {
+  balanceAmount.innerText =
+    parseInt(budgetAmount.innerText) - parseInt(expensesAmount.innerText);
+}
 expForm.addEventListener("submit", (e) => {
   e.preventDefault();
   addExpenses(expName.value, expNumber.value);

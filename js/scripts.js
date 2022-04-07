@@ -11,11 +11,6 @@ const displayExpenses = document.getElementById("displayExpenses");
 let expName = document.getElementById("expName");
 let expNumber = document.getElementById("expNumber");
 
-const editForm = document.getElementById("editForm");
-const saveEdit = document.getElementById("saveEdit");
-const editExpValue = document.getElementById("editExpValue");
-const editExpNumber = document.getElementById("editExpNumber");
-
 const budgetForm = document.getElementById("budget-form");
 
 let id = 0;
@@ -36,7 +31,6 @@ function getBudgetAmount(amount) {
     balanceAmount.innerText = amount;
     expForm.style.display = "block";
     budgetForm.style.display = "none";
-    editForm.style.display = "none";
     amountInput.value = "";
   }
 }
@@ -79,11 +73,10 @@ function displayExp(details) {
   for (i=0; i < details.length; i++) {
     expValue.innerHTML += `
     <div class="expValue" id="${details[i].id}">
-      <div id="expTitleName" class="exp"><p>${details[i].name}</p></div>
-      <div id="expValueAmount" class="exp"><p> <span>$ </span> ${details[i].number}</p></div>
+      <div id="expTitleName" class="exp col"><p>${details[i].name}</p></div>
+      <div id="expValueAmount" class="exp col"><p> <span>$ </span> ${details[i].number}</p></div>
       <div id="edite_delete">
         <p>
-          <button id="${details[i].id}" onclick="editExpDetails(${details[i].id})"> <i class="fa-solid fa-pen-to-square"></i></button> 
           <button id="${details[i].id}" onclick="delExpenseDetails(${details[i].id})"><i class="fa-solid fa-trash"></i></button>
         </p>
       </div>
@@ -110,28 +103,6 @@ function updateBalance() {
     parseInt(budgetAmount.innerText) - parseInt(expensesAmount.innerText);
 }
 
-//Edit Function
-function editExpDetails(id) {
-  expForm.style.display = "none";
-  budgetForm.style.display = "none";
-  editForm.style.display = "We Block";
-  details.findIndex((item) => {
-    if (item.id === id) {
-      editExpName.value = item.name;
-      editExpNumber.value = item.number;
-      saveEdit.children[2].id = item.id;
-      modal.style.display = "block";
-    }
-  });
-}
-
-function getExpValue(editExpName, editExpNumber, id) {
-  edited = details.findIndex((obj) => obj.id == id);
-  details[edited].name = editExpName;
-  details[edited].number = parseInt(editExpNumber);
-  displayExp(details);
-}
-
 //Delete an expense
 function delExpenseDetails(id) {
   let index = details.findIndex((item) => item.id === id);
@@ -139,10 +110,6 @@ function delExpenseDetails(id) {
   displayExp(details);
 }
 
-saveEdit.addEventListener("submit", (e) => {
-  e.preventDefault();
-  getExpValue(editExpName.value, editExpNumber.value, saveEdit.children[2].id);
-});
 
 expForm.addEventListener("submit", (e) => {
   e.preventDefault();

@@ -1,3 +1,4 @@
+const btn = document.getElementById("myBtn");
 const amountInput = document.getElementById("number");
 const addForm = document.getElementById("addForm");
 
@@ -5,6 +6,8 @@ const budgetAmount = document.getElementById("budgetAmount");
 const balanceAmount = document.getElementById("balanceAmount");
 
 const expForm = document.getElementById("expForm");
+const expensesAmount = document.getElementById("expensesAmount");
+const displayExpenses = document.getElementById("displayExpenses");
 let expName = document.getElementById("expName");
 let expNumber = document.getElementById("expNumber");
 
@@ -80,15 +83,15 @@ function displayExp(details) {
       <div id="expValueAmount" class="exp"><p> <span>$ </span> ${details[i].number}</p></div>
       <div id="edite_delete">
         <p>
-          <button id="${details[i].id}" onclick="editExpDetails(${details[i].id})"> <img src="image/edit.svg" width="15" alt=""  /></button> 
-          <button id="${details[i].id}" onclick="delExpenseDetails(${details[i].id})"><img src="image/trash.svg" width="15" alt="" /></button>
+          <button id="${details[i].id}" onclick="editExpDetails(${details[i].id})"> <i class="fa-solid fa-pen-to-square"></i></button> 
+          <button id="${details[i].id}" onclick="delExpenseDetails(${details[i].id})"><i class="fa-solid fa-trash"></i></button>
         </p>
       </div>
     </div>
     `;
   }
   calcExpenses();
-  display.Expenses.style.display = "block";
+  displayExpenses.style.display = "block";
 }
 
 //Calculates expenses

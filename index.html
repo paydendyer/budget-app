@@ -24,7 +24,7 @@
     <div class="expenses col col-md col-sm">
       <h2> Expenses</h2>
       <i class="fa-solid fa-credit-card"></i>
-      <p class="exp-amount">$ <span id="expenseAmount">0</span></p>
+      <p class="exp-amount">$ <span id="expensesAmount">0</span></p>
     </div>
 
 <!-- Balance Section-->
@@ -41,6 +41,23 @@
       </form>
     </div>
   </div>
+
+  <div id="displayExpenses">
+    <div class="budget-list">
+      <div class="col">
+        <h4>Expense Name</h4>
+      </div>
+      <div class="col">
+        <h4>Expense Amount</h4>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div id="expValue"></div>
+  </div>
+</div>
+<div class="toggle">
+  <button id="myBtn" type="button">+</button>
+</div>
   
   <!-- Expenses Form-->
   <div class="expense-form" id="expense-form">

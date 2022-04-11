@@ -1,4 +1,4 @@
-# Address Book
+# Budget App
 By: Payden Dyer
 
 ## Technology Used:
